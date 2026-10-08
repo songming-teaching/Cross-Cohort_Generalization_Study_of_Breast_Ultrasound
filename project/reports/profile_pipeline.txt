@@ -1,0 +1,25 @@
+样本数 400
+原图尺寸样例 [(562, 471), (683, 585), (323, 473), (563, 473), (634, 610), (766, 585), (777, 578), (882, 581)]
+
+--- 单步拆解 ---
+  读图+转灰度                           2.72 ms
+  tone_normalize                   1.58 ms
+  letterbox                        0.36 ms
+  letterbox+RGB                    0.38 ms
+  torchvision 增广                   0.10 ms
+  完整 __getitem__(训练)               7.46 ms
+
+--- DataLoader 吞吐 ---
+Traceback (most recent call last):
+  File "C:\Users\15315\Desktop\paper1st\meliorate\project\scripts\profile_pipeline.py", line 75, in <module>
+    main()
+    ~~~~^^
+  File "C:\Users\15315\Desktop\paper1st\meliorate\project\scripts\profile_pipeline.py", line 69, in main
+    b = next(it); n += b[0].shape[0]
+  File "C:\Users\15315\Desktop\paper1st\meliorate\.venv\Lib\site-packages\torch\utils\data\dataloader.py", line 708, in __next__
+    data = self._next_data()
+  File "C:\Users\15315\Desktop\paper1st\meliorate\.venv\Lib\site-packages\torch\utils\data\dataloader.py", line 763, in _next_data
+    index = self._next_index()  # may raise StopIteration
+  File "C:\Users\15315\Desktop\paper1st\meliorate\.venv\Lib\site-packages\torch\utils\data\dataloader.py", line 698, in _next_index
+    return next(self._sampler_iter)  # may raise StopIteration
+StopIteration

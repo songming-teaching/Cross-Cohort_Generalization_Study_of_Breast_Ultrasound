@@ -1,0 +1,12 @@
+{
+  "variant": "densenet121_se",
+  "cohort": "busi",
+  "which": "final",
+  "n_benign": 20,
+  "n_malignant": 20,
+  "mean_ratio_benign": 0.07727341467980295,
+  "mean_ratio_malignant": 0.2704533715266734,
+  "target_layer": "layer4 (spatial backbone)",
+  "cam_target": "true_class",
+  "cam_convention": "每例反传**其真实类别**的 logit。早期版本恒用恶性类 logit，导致良性病例 ReLU 后整张全零、mask_energy_ratio 恒为 nan（实测 efficientnet_v2_s 良性列全缺）；改真类后两类均有定义。跨版本比较时**不可混用**这两种口径。"
+}

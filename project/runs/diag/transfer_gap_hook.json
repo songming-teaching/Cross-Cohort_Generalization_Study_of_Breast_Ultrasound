@@ -1,0 +1,58 @@
+{
+  "script": "scripts/verify_transfer_gap.py",
+  "input_artifact": "runs/dev_screen/results.csv",
+  "input_producer": "src/breastdg/train/dev_screen.py",
+  "checkpoint": "best_erm.pt（与 src_val_auc **同一检查点**）",
+  "cohort_axis": "queue（**不按 direction** —— 见 counterexample_by_direction）",
+  "stage": "dev",
+  "n_variants": 16,
+  "per_cohort": {
+    "BUSI": {
+      "src_val_auc": 0.967752436155914,
+      "external_auc": 0.7992464436755093,
+      "gap": 0.1685059924804046,
+      "n_positive": 16,
+      "n_total": 16
+    },
+    "BUSBRA": {
+      "src_val_auc": 0.8048637569102047,
+      "external_auc": 0.6500075599992724,
+      "gap": 0.15485619691093228,
+      "n_positive": 16,
+      "n_total": 16
+    }
+  },
+  "total": {
+    "src_val_auc": 0.8863080965330593,
+    "external_auc": 0.7246270018373909,
+    "gap": 0.16168109469566844,
+    "n_positive": 32,
+    "n_total": 32,
+    "gap_min": 0.08407422393372266,
+    "gap_max": 0.223913763006784,
+    "gap_median": 0.16576097901684567,
+    "external_auc_min_cell": 0.5870892427462985
+  },
+  "counterexample_by_direction": {
+    "busbra": {
+      "src_val_auc": 0.967752436155914,
+      "external_auc": 0.6500075599992724,
+      "gap": 0.3177448761566416
+    },
+    "busi": {
+      "src_val_auc": 0.8048637569102047,
+      "external_auc": 0.7992464436755093,
+      "gap": 0.005617313234695387
+    }
+  },
+  "final_pt_robustness": {
+    "BUSI": {
+      "external_auc_final_pt": 0.7992796039984621,
+      "external_auc_erm_pt": 0.7992464436755093
+    },
+    "BUSBRA": {
+      "external_auc_final_pt": 0.6504936411554992,
+      "external_auc_erm_pt": 0.6500075599992724
+    }
+  }
+}

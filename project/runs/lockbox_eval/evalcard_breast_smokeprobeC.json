@@ -1,0 +1,123 @@
+{
+  "tag": "breast_smokeprobeC",
+  "written_at": "2026-10-08 11:58:05",
+  "audit": {
+    "code": {
+      "git": null,
+      "code_hash": "0c1f0d8374db9963",
+      "dirty": null
+    },
+    "env": {
+      "python": "3.13.7",
+      "torch": "2.6.0+cu124",
+      "torchvision": "0.21.0+cu124",
+      "numpy": "2.5.2",
+      "sklearn": "1.9.1",
+      "scipy": "1.18.1",
+      "PIL": "12.3.0",
+      "requirements_lock_sha256": "f3e3f22fe41d84c5d5582e8c57a74df9cb6ce36f9f5d59b25bcddc026c9f289e",
+      "cuda": "12.4",
+      "cudnn": "90100"
+    },
+    "checkpoints": {
+      "smoke/seed0": {
+        "path": "C:\\Users\\15315\\Desktop\\paper1st\\meliorate\\project\\runs\\lockbox\\fdnet_gate_dual\\seed42\\d3fd7aefe0\\final.pt",
+        "sha256": "f64410189e63fa87907a362398cab0d2a9b28156953393d5752717746432bf42"
+      }
+    }
+  },
+  "thresholds_policy": "youden / sens90 全部来自**源域**冻结的 thresholds.json；外部集上只跑 fixed_0.5（F7.1）",
+  "bootstrap_seed": 20261006,
+  "rows": [
+    {
+      "cohort": "breast",
+      "arm": "",
+      "n": 252,
+      "n_clusters": 252,
+      "prevalence": 0.3888888888888889,
+      "auc": 0.8228862973760933,
+      "auc_abs": 0.8228862973760933,
+      "auc_ci_lo": 0.7646327900586988,
+      "auc_ci_hi": 0.8715078984107215,
+      "auc_ci_seed": 20261006,
+      "runs": {
+        "fixed_0.5": {
+          "thr": 0.5,
+          "sens": 0.6836734693877551,
+          "spec": 0.7597402597402597,
+          "ppv": 0.6442307692307693,
+          "npv": 0.7905405405405406,
+          "acc": 0.7301587301587301,
+          "tp": 67,
+          "fp": 37,
+          "tn": 117,
+          "fn": 31
+        },
+        "youden": {
+          "thr": 0.08782389760017395,
+          "sens": 0.7959183673469388,
+          "spec": 0.6818181818181818,
+          "ppv": 0.6141732283464567,
+          "npv": 0.84,
+          "acc": 0.7261904761904762,
+          "tp": 78,
+          "fp": 49,
+          "tn": 105,
+          "fn": 20
+        },
+        "sens90": {
+          "thr": 0.0024517509154975414,
+          "sens": 0.9591836734693877,
+          "spec": 0.2987012987012987,
+          "ppv": 0.46534653465346537,
+          "npv": 0.92,
+          "acc": 0.5555555555555556,
+          "tp": 94,
+          "fp": 108,
+          "tn": 46,
+          "fn": 4
+        }
+      },
+      "thr_source": "源域冻结 thresholds.json",
+      "thr_frozen": {
+        "youden": 0.08782389760017395,
+        "sens90": 0.0024517509154975414
+      },
+      "ckpt": "C:\\Users\\15315\\Desktop\\paper1st\\meliorate\\project\\runs\\lockbox\\fdnet_gate_dual\\seed42\\d3fd7aefe0\\final.pt",
+      "ckpt_sha256": "f64410189e63fa87907a362398cab0d2a9b28156953393d5752717746432bf42",
+      "cfg": {
+        "model": "fdnet_v2",
+        "steps": 3000,
+        "batch_size": 32,
+        "lr": 0.0001,
+        "weight_decay": 0.0001,
+        "warmup_frac": 0.05,
+        "lambda_domain": 1.0,
+        "lambda_l": 0.1,
+        "lambda_seg": 0.0,
+        "gate_lr": 0.01,
+        "class_weight": [
+          1.0,
+          1.0
+        ],
+        "amp": true,
+        "seed": 42,
+        "num_workers": 12,
+        "eval_every": 500,
+        "image_size": 512,
+        "tone_norm": true,
+        "geometry": "p4",
+        "n_domains": 3,
+        "hl_only": false,
+        "render_aug": false,
+        "wavelet_jitter": false,
+        "scale_aug": false,
+        "ema": false,
+        "mixstyle": false,
+        "mixstyle_crossdomain": true
+      },
+      "variant": "smoke",
+      "seed": 0
+    }
+  ]
+}

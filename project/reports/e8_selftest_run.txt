@@ -1,0 +1,14 @@
+[PASS] T1 σ̂² 无偏 c=0.24 mean=0.9985
+[PASS] T1 σ̂² 无偏 c=0.64 mean=0.9845
+[PASS] T1 σ̂² 无偏 c=2.56 mean=0.9966
+[PASS] T1 σ̂² 无偏 c=10.24 mean=0.9977
+[PASS] T2 θ̂ 反演 c=0.24 θ̃=3.0 median=3.005 (B=500)
+[PASS] T2 θ̂ 反演 c=2.56 θ̃=6.0 median=5.953 (B=500)
+[PASS] T3 I 类错误率 ∈ [0.01, 0.10] rate=0.045
+[PASS] T4 功效 θ̃=2 @ c=0.64 > 0.9 power=0.99
+[PASS] T5 deflation 双尖峰 stage1_detected=True, θ̂₂=2.27
+[PASS] T6 降维稀释存档 θ̂ 512→128 稀释比 0.26（≈p'/p=0.25）
+[PASS] T7 PCA 门（共享 u 应通过） ratio=1.04
+[PASS] T8 PCA 门（正交 u 应拦截） ratio=0.41
+
+自验 全部通过。

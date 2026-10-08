@@ -1,0 +1,78 @@
+{
+  "BUSI": {
+    "n": 629,
+    "n_with_mask": 629,
+    "lesion_cut_mean": 0.0,
+    "lesion_cut_max": 0.0,
+    "lesion_cut_gt0": 0,
+    "lesion_erode_mean": 0.0007645581475550264,
+    "lesion_erode_max": 0.033053528366479235,
+    "pad_geom_mean": 0.3765608115870926,
+    "pad_geom_std": 0.06544143914416507,
+    "pad_predicted_mean": 0.375872969661969,
+    "black_content_mean": 0.04342898946693441,
+    "aspect_mean": 1.2563563745938078,
+    "aspect_range": [
+      1.0016528925619834,
+      2.0526315789473686
+    ],
+    "pad_mismatch_gt2pct": 0
+  },
+  "BrEaST": {
+    "n": 252,
+    "n_with_mask": 252,
+    "lesion_cut_mean": 0.0,
+    "lesion_cut_max": 0.0,
+    "lesion_cut_gt0": 0,
+    "lesion_erode_mean": 0.0003497078226313112,
+    "lesion_erode_max": 0.006048189772337342,
+    "pad_geom_mean": 0.3734223502022879,
+    "pad_geom_std": 0.1138189983691374,
+    "pad_predicted_mean": 0.37225746844249435,
+    "black_content_mean": 0.04864012979113856,
+    "aspect_mean": 1.2892024271223899,
+    "aspect_range": [
+      0.9251968503937008,
+      3.217993079584775
+    ],
+    "pad_mismatch_gt2pct": 0
+  },
+  "BUSBRA": {
+    "n": 400,
+    "n_with_mask": 1,
+    "lesion_cut_mean": 0.0,
+    "lesion_cut_max": 0.0,
+    "lesion_cut_gt0": 0,
+    "lesion_erode_mean": 0.0,
+    "lesion_erode_max": 0.0,
+    "pad_geom_mean": 0.38866233825683594,
+    "pad_geom_std": 0.054925286104296596,
+    "pad_predicted_mean": 0.38793115132614375,
+    "black_content_mean": 0.025321857017271156,
+    "aspect_mean": 1.2747459269430412,
+    "aspect_range": [
+      1.0196078431372548,
+      1.564516129032258
+    ],
+    "pad_mismatch_gt2pct": 0
+  },
+  "BUS-UCLM": {
+    "n": 264,
+    "n_with_mask": 1,
+    "lesion_cut_mean": 0.0,
+    "lesion_cut_max": 0.0,
+    "lesion_cut_gt0": 0,
+    "lesion_erode_mean": 0.0,
+    "lesion_erode_max": 0.0,
+    "pad_geom_mean": 0.45130781693892047,
+    "pad_geom_std": 0.014616856096725635,
+    "pad_predicted_mean": 0.44917641696349814,
+    "black_content_mean": 0.03453682523171852,
+    "aspect_mean": 1.4068941325330917,
+    "aspect_range": [
+      1.3102310231023102,
+      1.688034188034188
+    ],
+    "pad_mismatch_gt2pct": 0
+  }
+}

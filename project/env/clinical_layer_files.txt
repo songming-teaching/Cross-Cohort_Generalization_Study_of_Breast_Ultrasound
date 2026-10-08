@@ -1,0 +1,69 @@
+# 临床数据附加层 —— 文件清单与删除方法
+#
+# 立此清单的原因（用户 2026-10-08 约束）：
+#   "临床数据用完要删掉这些更改，还原成我们训练的那个模型的内容，然后上传 git"
+#
+# 纪律：本层**只新增独立文件、零修改既有文件**。
+#   ⇒ 删除 = 按本清单 rm，**不需要改回任何现有文件**，git diff 自然归零。
+#
+# 省事做法（推荐）：先把现有代码提交 git（得到一个干净基线），
+#   之后做临床实验，做完按本清单删 → `git status` 应显示 clean。
+
+# ===========================================================================
+# A. 要删的文件与目录（全部为本层新增）
+# ===========================================================================
+
+# A1. 代码（2 个，均为本层新增，无任何既有文件引用它们）
+scripts/clinical_ingest.py
+scripts/clinical_eval.py
+
+# A2. 产物（整个目录，本层独有）
+runs/clinical_eval/
+
+# A3. 数据（在**仓库之外**，见 B 节；删除即可）
+#     <DATA_ROOT>/_clinical/<队列名>/     ← DATA_ROOT 默认 .../paper1st/data
+#     <DATA_ROOT>/_clinical_src_smoke/    ← 仅冒烟测试用过，若存在则删
+
+# ===========================================================================
+# B. 数据放在哪（为什么物理上不可能进 git）
+# ===========================================================================
+#
+#   C:\Users\15315\Desktop\paper1st\data\_clinical\<name>\
+#
+# - `config.DATA_ROOT` = `.../paper1st/data`，是 `meliorate/` 的**同级**目录，
+#   位于 git 根（`meliorate/project`）**之外**。
+# - ⇒ 数据**物理上**不可能被提交，不依赖 .gitignore 写得对不对。
+#   （与 config.py 中"把 runs 放数据盘，以保证镜像不含数据/结果"同一思路。）
+# - 该目录当前**不存在**（冒烟测试后已清）；临床数据到手后再由
+#   `clinical_ingest.py` 创建。
+
+# ===========================================================================
+# C. 已验证的"零耦合"证据（2026-10-08 实测）
+# ===========================================================================
+#   1. grep 全库：`clinical_ingest|clinical_eval|clinical_` 在
+#      scripts/ src/ env/ 中**只命中这两个新文件自身**，无第三方引用。
+#   2. 口径登记走**运行时注入** `cohorts.COHORT_KIND[cohort_key] = "raw"`
+#      （在 clinical_eval.py 内），**不改** `cohorts.py` 源文件
+#      → 删除本层后 `cohorts.py` 逐字节不变。
+#   3. 复用而非复制：`clinical_eval.py` 直接 import
+#      `evaluate_lockbox` 的 find_ckpts / load_thresholds / eval_one /
+#      cluster_keys / sha256_file / code_fingerprint / env_fingerprint，
+#      **不产生第二份外部集评估口径**（F7.1 阈值纪律只有一处）。
+#   4. 端到端冒烟已跑通（12 图 × 2 检查点），随后清理，
+#      `runs/lockbox_eval/summary_full_card.csv` 仍 148 行、
+#      `runs/diag/e8_lockbox/` 仍 49/49 → 既有产物未受影响。
+#
+# ===========================================================================
+# D. 不进本清单的（**是正式研究成果，必须保留**）
+# ===========================================================================
+# 以下文件同为 2026-10-08 新增/修改，但属**核心研究**，与本层无关，不得删：
+#   scripts/verify_lockbox_gap.py          → runs/diag/transfer_gap_lockbox.json
+#   scripts/verify_transfer_gap.py         → runs/diag/transfer_gap_hook.json
+#   scripts/q5_second_order_row.py         → runs/diag/q5_second_order_row.json
+#   scripts/aggregate_e8_lockbox.py        → runs/diag/e8_lockbox_summary.json
+#   src/breastdg/data/cohorts.py           （唯一出处，核心）
+#   scripts/preflight.py                   （新增坑11 两道闸门）
+#   scripts/make_figures.py                （新增 fig_e8_lockbox_spectrum）
+#   以及 run_e8.py / evaluate_lockbox.py / e3_polarity_analysis.py /
+#   ensemble_and_calibrate.py / gradcam_interpretability.py /
+#   diagnose_domain_probe_p4.py 的缺陷修复。

@@ -1,0 +1,16 @@
+{
+  "n_models": 49,
+  "n_polarity_inverted": 9,
+  "n_corrected_ci_upper_below_half": 0,
+  "n_uncorrected_auc_below_half": 9,
+  "n_corrected_auc_below_half": 1,
+  "n_delta_ci_all_positive": 40,
+  "branch_i_residual_significant_failure": false,
+  "branch_ii_failure_largely_mitigated": true,
+  "branch_selected": "ii",
+  "mean_auc_corrected": 0.8098508634222918,
+  "mean_auc_uncorrected": 0.602334142791732,
+  "mean_delta": 0.206764707638026,
+  "rule": "(i) 存在 corrected CI 上界 < 0.5；(ii) 有极性翻转且无该情形。两者互斥。—— 判据固定在看到锁箱数之前（§5.2）",
+  "note": "本文件由 e3_polarity_analysis.py 依**预注册**判据生成；两个分支互斥，不得同时声称成立。"
+}

@@ -1,0 +1,47 @@
+{
+  "prereg": "Q-5_归因表第八行_锁箱前预登记.md",
+  "prereg_sha256": "765c986b31df8d45c2106442a59217c73091eff6baafa0c57abd02fb3f6d530d",
+  "stage": "dev",
+  "stage_caveat": "预登记 §三 写的是『锁箱臂上』，但锁箱 49 格中**无 no_domainhead**（也无 baseline），故锁箱重算不可行 —— 与 E7 同一原因、同一处置（保持 dev、正文写明）。**因此本行数值即预登记 §二 用来提出 H8 的那组数，不构成独立确认**，只能报告为『与预登记判据一致』。",
+  "cv": {
+    "splitter": "StratifiedGroupKFold",
+    "n_splits": 5,
+    "shuffle": true,
+    "random_state": 0,
+    "group": "patient_id/lesion",
+    "scaler": "StandardScaler(per-fold)",
+    "clf": "LogisticRegression(max_iter=3000)"
+  },
+  "cohort_sizes": {
+    "BUSI": 629,
+    "BUSBRA": 1875,
+    "BUS-UCLM": 264
+  },
+  "per_pair": {
+    "BUSI_vs_BUS-UCLM": {
+      "A_full": 0.9988444674822035,
+      "A_res_upper": 0.8418754486603544,
+      "A_res_lower": 0.7557999769622412,
+      "A_2s_ALL_2nd": 0.9863772617319787,
+      "A_2_pure_2nd": 0.9131739074342848,
+      "scale_only": 0.9669232911742345,
+      "rule_satisfied": true,
+      "criterion": "A_2s >= A_res AND A_2 >= A_res_lo",
+      "ALL_2nd_prev": 0.9863772617319787
+    },
+    "BUSI_vs_BUSBRA": {
+      "A_full": 0.9968600380952382,
+      "A_res_upper": 0.9684741079365079,
+      "A_res_lower": 0.8356923936507936,
+      "A_2s_ALL_2nd": 0.9953739513227514,
+      "A_2_pure_2nd": 0.8792008126984128,
+      "scale_only": 0.9545034497354496,
+      "rule_satisfied": true,
+      "criterion": "A_2s >= A_res AND A_2 >= A_res_lo",
+      "ALL_2nd_prev": 0.9953739513227514
+    }
+  },
+  "verdict": "supported",
+  "verdict_wording": "剩余量在免模型统计量的上界之内",
+  "note": "A_2（pure_2nd）与 A_2s（ALL_2nd，含尺度）**必须分列两栏**，不得把含尺度的 ALL_2nd 称为『纯纹理统计量』（预登记 §四）。"
+}

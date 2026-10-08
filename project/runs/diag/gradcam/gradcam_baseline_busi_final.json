@@ -1,0 +1,10 @@
+{
+  "variant": "baseline",
+  "cohort": "busi",
+  "which": "final",
+  "n_benign": 20,
+  "n_malignant": 20,
+  "mean_ratio_benign": 0.04160667955875397,
+  "mean_ratio_malignant": 0.2576095602242276,
+  "target_layer": "layer4 (spatial backbone)"
+}

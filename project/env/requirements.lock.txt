@@ -1,0 +1,45 @@
+# 本机实装版本快照（2026-10-05，从 pip list --format=freeze 导出）
+#
+# 为什么需要它：上游此前**没有任何依赖声明文件**（无 requirements.txt /
+# pyproject.toml / environment.yml）。这不只是云迁移的问题 —— 期刊的
+# 可复现性声明也需要它，且没有它就无法保证两个月后重跑能得到同样的数。
+#
+# ⚠ torch / torchvision **故意不列在此文件**：
+#   它们由基础镜像提供（见 Dockerfile）。容器内再次安装会与镜像自带的
+#   版本冲突，故改用 scripts/verify_env.py 做「断言一致」而非「重新安装」。
+#   目标版本（2026-10-07 **回滚为**）：torch **2.6.0**+cu124, torchvision **0.21.0**+cu124, cudnn 90100
+#   即**与本机实测完全一致**。经过：曾一度降到 2.5.1（用户以为基础镜像无 2.6.0），
+#   但查证 Docker Hub 后确认 `2.6.0-cuda12.4-cudnn9-runtime` 存在，且本机就是 2.6.0
+#   —— verify_env.py 的职责是「断言云端 == 本机」，期望值偏离本机会使其失去意义。
+#   已核本仓未用任何 2.6 专有 API，详见 Dockerfile 注释。
+#   ⚠ torch 与 torchvision 必须配对（2.6.0 ↔ 0.21.0），且须同步改 verify_env.py 的 EXPECT_*。
+#   ⚠ 卡型：cu124 只支持 sm_50~sm_90。Blackwell（sm_120：RTX PRO 6000 / 6000D / B200）
+#     不可用 —— 需 CUDA ≥12.8，运行期会报 "no kernel image is available"。
+
+# ---- 科学计算 ----
+numpy==2.5.2
+scipy==1.18.1
+scikit-learn==1.9.1
+pandas==3.0.6
+
+# ---- 图像与信号 ----
+pillow==12.3.0
+opencv-python-headless==5.0.0.93
+PyWavelets==1.10.0
+
+# ---- 去重（数据加载必需）----
+# ⚠ 2026-10-08 补：此前**漏登记**，导致云端 smoke 直接崩：
+#     RuntimeError: 缺少 imagehash：pip install imagehash
+#   `data/dedup.py` 用它做感知哈希去重（BUSI 有重复图，必须去）。
+#   本机一直装着，但锁文件里没有 → 云端复刻环境时就缺了。
+#   教训：锁文件必须由**实际 import 扫描**生成，不能靠手写记忆。
+imagehash==4.3.2
+
+# ---- 建模 ----
+timm==1.0.30
+
+# ---- 绘图 ----
+matplotlib==3.11.2
+
+# ---- 杂项 ----
+tqdm==4.70.1

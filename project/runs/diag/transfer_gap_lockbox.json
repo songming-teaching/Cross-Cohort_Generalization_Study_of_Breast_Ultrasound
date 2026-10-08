@@ -1,0 +1,57 @@
+{
+  "script": "scripts/verify_lockbox_gap.py",
+  "level": 2,
+  "level_note": "级 2（锁箱）。级 1 见 verify_transfer_gap.py / runs/diag/transfer_gap_hook.json（dev，跨库互换）。两级口径不同，**不是同一个数字**。",
+  "inputs": {
+    "src_val": "runs/lockbox/*/seed*/**/thresholds.json（字段 auc_val）",
+    "external": "runs/lockbox_eval/summary_full_card.csv"
+  },
+  "same_checkpoint": "两侧均为 final.pt —— freeze_thresholds 与 evaluate_lockbox 的 find_ckpts 都只收 */final.pt；故相减是同检查点落差（非同口径不可减）",
+  "source_domain": "BUSI + BUSBRA（合并，按 splits/source_busi_busbra.json 划分）",
+  "run_seed_from": "路径（thresholds.json 的 seed 字段是自举种子，非运行种子）",
+  "bootstrap_seed": 20261006,
+  "n_cells": 49,
+  "per_arm": {
+    "oasbud_corrected": {
+      "src_val_auc": 0.8721476868304516,
+      "external_auc": 0.8098448979591837,
+      "gap": 0.06230278887126793,
+      "gap_median": 0.0500933950967416,
+      "gap_min": -0.021481729375433245,
+      "gap_max": 0.3735450620785277,
+      "n_positive": 47,
+      "n_total": 49,
+      "n_cells": 49
+    },
+    "oasbud_uncorrected": {
+      "src_val_auc": 0.8721476868304516,
+      "external_auc": 0.6023244897959183,
+      "gap": 0.2698231970345332,
+      "gap_median": 0.25013323249511565,
+      "gap_min": 0.09445912270750612,
+      "gap_max": 0.5905097434927838,
+      "n_positive": 49,
+      "n_total": 49,
+      "n_cells": 49
+    },
+    "breast": {
+      "src_val_auc": 0.8721476868304516,
+      "external_auc": 0.8028612244897959,
+      "gap": 0.06928646234065569,
+      "gap_median": 0.07551827062456673,
+      "gap_min": 0.017395670259028218,
+      "gap_max": 0.14374506207852766,
+      "n_positive": 49,
+      "n_total": 49,
+      "n_cells": 49
+    }
+  },
+  "two_arm_contrast": {
+    "gap_corrected": 0.06230278887126793,
+    "gap_uncorrected": 0.2698231970345332,
+    "gap_ratio_unc_over_cor": 4.330836579274979,
+    "auc_delta_cor_minus_unc": 0.20752040816326534
+  },
+  "stage": "lockbox",
+  "wording": "报『consistent with』；级 2 是单向（源→外部，不互换），与级 1 的跨库互换是不同对照，不得混用同一句话"
+}

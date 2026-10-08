@@ -1,0 +1,18 @@
+C:\Users\15315\Desktop\paper1st\meliorate\.venv\Lib\site-packages\torch\optim\lr_scheduler.py:227: UserWarning: Detected call of `lr_scheduler.step()` before `optimizer.step()`. In PyTorch 1.1.0 and later, you should call them in the opposite order: `optimizer.step()` before `lr_scheduler.step()`.  Failure to do this will result in PyTorch skipping the first value of the learning rate schedule. See more details at https://pytorch.org/docs/stable/optim.html#how-to-adjust-learning-rate
+  warnings.warn(
+队列 ['baseline']
+方向 ['busbra']  种子 [42]  共 1 次运行
+==============================================================================
+
+[1/1] baseline / busbra / seed42
+  step     50/100  loss 1.3984  cls 0.6122  dom 0.7862  alpha 0.987  src_val AUC 0.6598
+  step    100/100  loss 1.4325  cls 0.6462  dom 0.7863  alpha 1.000  src_val AUC 0.7450
+  完成：best 源域 val AUC 0.7450 @ step 100  耗时 2.2 min
+  => dev AUC 0.5172 | src val AUC 0.7450 | 2.93 min
+
+==============================================================================
+variant           direction   n    dev AUC 均值       SD
+baseline          busbra      1        0.5172   0.0000
+
+主方向汇总（留出 BUSBRA）：
+  baseline          0.5172

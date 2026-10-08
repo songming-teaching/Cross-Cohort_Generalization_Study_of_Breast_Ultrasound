@@ -1,0 +1,51 @@
+{
+  "busi": {
+    "n_images": 647,
+    "n_benign": 437,
+    "n_malignant": 210,
+    "n_other": 0,
+    "n_patients": 647,
+    "n_lesions": 647,
+    "n_with_mask": 647,
+    "images_per_patient": 1.0
+  },
+  "busbra": {
+    "n_images": 1875,
+    "n_benign": 1268,
+    "n_malignant": 607,
+    "n_other": 0,
+    "n_patients": 1064,
+    "n_lesions": 1875,
+    "n_with_mask": 0,
+    "images_per_patient": 1.762
+  },
+  "busuclm": {
+    "n_images": 264,
+    "n_benign": 174,
+    "n_malignant": 90,
+    "n_other": 0,
+    "n_patients": 264,
+    "n_lesions": 264,
+    "n_with_mask": 0,
+    "images_per_patient": 1.0
+  },
+  "breast": {
+    "n_images": 252,
+    "n_benign": 154,
+    "n_malignant": 98,
+    "n_other": 0,
+    "n_patients": 252,
+    "n_lesions": 252,
+    "n_with_mask": 252,
+    "images_per_patient": 1.0
+  },
+  "oasbud": {
+    "n_lesions": 100,
+    "n_views": 200,
+    "n_benign": 48,
+    "n_malignant": 52
+  },
+  "excluded": {
+    "busi_normal": 133
+  }
+}

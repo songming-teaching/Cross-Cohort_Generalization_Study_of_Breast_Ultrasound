@@ -1,0 +1,94 @@
+{
+  "BUSI": {
+    "S0 严格黑边": {
+      "crop_axis_mean": 0.0,
+      "crop_axis_max": 0.0,
+      "mask_lost_mean": 0.0,
+      "mask_lost_max": 0.0,
+      "n_mask_lost_gt0": 0
+    },
+    "S1 当前P4": {
+      "crop_axis_mean": 2.95548648106607e-05,
+      "crop_axis_max": 0.006012024048096198,
+      "mask_lost_mean": 0.0,
+      "mask_lost_max": 0.0,
+      "n_mask_lost_gt0": 0
+    },
+    "S2 激进(5%)": {
+      "crop_axis_mean": 2.95548648106607e-05,
+      "crop_axis_max": 0.006012024048096198,
+      "mask_lost_mean": 0.0,
+      "mask_lost_max": 0.0,
+      "n_mask_lost_gt0": 0
+    }
+  },
+  "BrEaST": {
+    "S0 严格黑边": {
+      "crop_axis_mean": 0.000982273760264092,
+      "crop_axis_max": 0.2357723577235772,
+      "mask_lost_mean": 0.0,
+      "mask_lost_max": 0.0,
+      "n_mask_lost_gt0": 0
+    },
+    "S1 当前P4": {
+      "crop_axis_mean": 0.0012177060316734029,
+      "crop_axis_max": 0.24227642276422767,
+      "mask_lost_mean": 0.0,
+      "mask_lost_max": 0.0,
+      "n_mask_lost_gt0": 0
+    },
+    "S2 激进(5%)": {
+      "crop_axis_mean": 0.0012546145701850988,
+      "crop_axis_max": 0.24227642276422767,
+      "mask_lost_mean": 0.0,
+      "mask_lost_max": 0.0,
+      "n_mask_lost_gt0": 0
+    }
+  },
+  "BUSBRA": {
+    "S0 严格黑边": {
+      "crop_axis_mean": 0.0,
+      "crop_axis_max": 0.0,
+      "mask_lost_mean": 0.0,
+      "mask_lost_max": 0.0,
+      "n_mask_lost_gt0": 0
+    },
+    "S1 当前P4": {
+      "crop_axis_mean": 0.0,
+      "crop_axis_max": 0.0,
+      "mask_lost_mean": 0.0,
+      "mask_lost_max": 0.0,
+      "n_mask_lost_gt0": 0
+    },
+    "S2 激进(5%)": {
+      "crop_axis_mean": 9.887284951552402e-06,
+      "crop_axis_max": 0.0025706940874036244,
+      "mask_lost_mean": 0.0,
+      "mask_lost_max": 0.0,
+      "n_mask_lost_gt0": 0
+    }
+  },
+  "BUS-UCLM": {
+    "S0 严格黑边": {
+      "crop_axis_mean": 0.00641175413371675,
+      "crop_axis_max": 0.07242990654205606,
+      "mask_lost_mean": 0.0,
+      "mask_lost_max": 0.0,
+      "n_mask_lost_gt0": 0
+    },
+    "S1 当前P4": {
+      "crop_axis_mean": 0.00641175413371675,
+      "crop_axis_max": 0.07242990654205606,
+      "mask_lost_mean": 0.0,
+      "mask_lost_max": 0.0,
+      "n_mask_lost_gt0": 0
+    },
+    "S2 激进(5%)": {
+      "crop_axis_mean": 0.00641175413371675,
+      "crop_axis_max": 0.07242990654205606,
+      "mask_lost_mean": 0.0,
+      "mask_lost_max": 0.0,
+      "n_mask_lost_gt0": 0
+    }
+  }
+}

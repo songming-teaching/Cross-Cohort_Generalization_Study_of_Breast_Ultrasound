@@ -1,0 +1,40 @@
+C:\Users\15315\Desktop\paper1st\meliorate\.venv\Lib\site-packages\torch\optim\lr_scheduler.py:227: UserWarning: Detected call of `lr_scheduler.step()` before `optimizer.step()`. In PyTorch 1.1.0 and later, you should call them in the opposite order: `optimizer.step()` before `lr_scheduler.step()`.  Failure to do this will result in PyTorch skipping the first value of the learning rate schedule. See more details at https://pytorch.org/docs/stable/optim.html#how-to-adjust-learning-rate
+  warnings.warn(
+设备 cuda  步数 50  bs 32
+==============================================================================
+源域 train 1200  val 200  目标域 264
+
+--- resnet50_cbam ---
+  前向 OK（eval）：(2, 2)
+  step     25/50  loss 1.6760  cls 0.6734  dom 1.0026  alpha 0.987  src_val AUC 0.6036
+  step     50/50  loss 2.4473  cls 0.6830  dom 1.7643  alpha 1.000  src_val AUC 0.5612
+  完成：best 源域 val AUC 0.6036 @ step 25  耗时 0.9 min
+C:\Users\15315\Desktop\paper1st\meliorate\.venv\Lib\site-packages\torch\optim\lr_scheduler.py:227: UserWarning: Detected call of `lr_scheduler.step()` before `optimizer.step()`. In PyTorch 1.1.0 and later, you should call them in the opposite order: `optimizer.step()` before `lr_scheduler.step()`.  Failure to do this will result in PyTorch skipping the first value of the learning rate schedule. See more details at https://pytorch.org/docs/stable/optim.html#how-to-adjust-learning-rate
+  warnings.warn(
+  概率 CSV OK：n=200 AUC=0.6036 -> probs_val.csv
+
+--- fdnet_v2 ---
+  前向 OK（eval）：(2, 2)
+  step     25/50  loss 1.3526  cls 0.5862  dom 0.7344  alpha 0.987  src_val AUC 0.6646  g 0.475
+  step     50/50  loss 0.9909  cls 0.5581  dom 0.4096  alpha 1.000  src_val AUC 0.7438  g 0.470
+  完成：best 源域 val AUC 0.7438 @ step 50  耗时 0.4 min
+C:\Users\15315\Desktop\paper1st\meliorate\.venv\Lib\site-packages\torch\optim\lr_scheduler.py:227: UserWarning: Detected call of `lr_scheduler.step()` before `optimizer.step()`. In PyTorch 1.1.0 and later, you should call them in the opposite order: `optimizer.step()` before `lr_scheduler.step()`.  Failure to do this will result in PyTorch skipping the first value of the learning rate schedule. See more details at https://pytorch.org/docs/stable/optim.html#how-to-adjust-learning-rate
+  warnings.warn(
+  概率 CSV OK：n=200 AUC=0.7438 -> probs_val.csv
+
+--- densenet121_se ---
+  前向 OK（eval）：(2, 2)
+  step     25/50  loss 2.0753  cls 0.7746  dom 1.3007  alpha 0.987  src_val AUC 0.7209
+  step     50/50  loss 4.0923  cls 0.5762  dom 3.5160  alpha 1.000  src_val AUC 0.6860
+  完成：best 源域 val AUC 0.7209 @ step 25  耗时 0.5 min
+  概率 CSV OK：n=200 AUC=0.7209 -> probs_val.csv
+
+==============================================================================
+S3 概率 CSV 字段： ['image_id', 'prob', 'label', 'patient_id', 'lesion_id', 'dataset', 'domain']
+   首行： {'image_id': 'bus_0634-l.png', 'prob': '0.4867951273918152', 'label': '0', 'patient_id': 'busbra-634', 'lesion_id': 'bus_0634-l', 'dataset': 'busbra', 'domain': 'src_val'}
+   已冻结 -> runs/smoke/probs_schema.json
+
+S4 门 g：初值 0.4748 → 末值 0.4696  （在变化 OK）
+
+==============================================================================
+冒烟结果：成功 ['resnet50_cbam', 'fdnet_v2', 'densenet121_se']

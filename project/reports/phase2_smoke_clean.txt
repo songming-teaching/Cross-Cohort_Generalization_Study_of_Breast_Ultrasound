@@ -1,0 +1,152 @@
+Downloading: "https://download.pytorch.org/models/resnet50-11ad3fa6.pth" to C:\Users\15315/.cache\torch\hub\checkpoints\resnet50-11ad3fa6.pth
+设备 cuda  步数 50  bs 32
+==============================================================================
+源域 train 1200  val 200  目标域 264
+
+--- resnet50_cbam ---
+C:\Users\15315\Desktop\paper1st\meliorate\.venv\Lib\site-packages\torch\optim\lr_scheduler.py:227: UserWarning: Detected call of `lr_scheduler.step()` before `optimizer.step()`. In PyTorch 1.1.0 and later, you should call them in the opposite order: `optimizer.step()` before `lr_scheduler.step()`.  Failure to do this will result in PyTorch skipping the first value of the learning rate schedule. See more details at https://pytorch.org/docs/stable/optim.html#how-to-adjust-learning-rate
+  warnings.warn(
+  前向 OK（eval）：(2, 2)
+  step     25/50  loss 1.6485  cls 0.8622  dom 0.7864  alpha 0.987  src_val AUC 0.4968
+  step     50/50  loss 1.8308  cls 0.6945  dom 1.1363  alpha 1.000  src_val AUC 0.5577
+  完成：best 源域 val AUC 0.5577 @ step 50  耗时 0.9 min
+Traceback (most recent call last):
+  File "C:\Users\15315\Desktop\paper1st\meliorate\project\src\breastdg\train\smoke.py", line 98, in main
+    pr = predict_with_probs(best, va, ld_va, device,
+                            domain_name="src_val",
+                            out_csv=out_root / name / "probs_val.csv")
+  File "C:\Users\15315\Desktop\paper1st\meliorate\.venv\Lib\site-packages\torch\utils\_contextlib.py", line 116, in decorate_context
+    return func(*args, **kwargs)
+  File "C:\Users\15315\Desktop\paper1st\meliorate\project\src\breastdg\train\engine.py", line 205, in predict_with_probs
+    logits = model(x.to(device))
+  File "C:\Users\15315\Desktop\paper1st\meliorate\.venv\Lib\site-packages\torch\nn\modules\module.py", line 1739, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\15315\Desktop\paper1st\meliorate\.venv\Lib\site-packages\torch\nn\modules\module.py", line 1750, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "C:\Users\15315\Desktop\paper1st\meliorate\project\src\breastdg\models\backbones.py", line 33, in forward
+    f = self.forward_features(x)
+  File "C:\Users\15315\Desktop\paper1st\meliorate\project\src\breastdg\models\backbones.py", line 87, in forward_features
+    return torch.flatten(self.pool(self.cbam(self.backbone(x))), 1)
+                                             ~~~~~~~~~~~~~^^^
+  File "C:\Users\15315\Desktop\paper1st\meliorate\.venv\Lib\site-packages\torch\nn\modules\module.py", line 1739, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\15315\Desktop\paper1st\meliorate\.venv\Lib\site-packages\torch\nn\modules\module.py", line 1750, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "C:\Users\15315\Desktop\paper1st\meliorate\.venv\Lib\site-packages\torch\nn\modules\container.py", line 250, in forward
+    input = module(input)
+  File "C:\Users\15315\Desktop\paper1st\meliorate\.venv\Lib\site-packages\torch\nn\modules\module.py", line 1739, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\15315\Desktop\paper1st\meliorate\.venv\Lib\site-packages\torch\nn\modules\module.py", line 1750, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "C:\Users\15315\Desktop\paper1st\meliorate\.venv\Lib\site-packages\torch\nn\modules\conv.py", line 554, in forward
+    return self._conv_forward(input, self.weight, self.bias)
+           ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\15315\Desktop\paper1st\meliorate\.venv\Lib\site-packages\torch\nn\modules\conv.py", line 549, in _conv_forward
+    return F.conv2d(
+           ~~~~~~~~^
+        input, weight, bias, self.stride, self.padding, self.dilation, self.groups
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+RuntimeError: Input type (torch.cuda.FloatTensor) and weight type (torch.FloatTensor) should be the same
+C:\Users\15315\Desktop\paper1st\meliorate\.venv\Lib\site-packages\torch\optim\lr_scheduler.py:227: UserWarning: Detected call of `lr_scheduler.step()` before `optimizer.step()`. In PyTorch 1.1.0 and later, you should call them in the opposite order: `optimizer.step()` before `lr_scheduler.step()`.  Failure to do this will result in PyTorch skipping the first value of the learning rate schedule. See more details at https://pytorch.org/docs/stable/optim.html#how-to-adjust-learning-rate
+  warnings.warn(
+  FAIL: RuntimeError: Input type (torch.cuda.FloatTensor) and weight type (torch.FloatTensor) should be the same
+
+--- fdnet_v2 ---
+  前向 OK（eval）：(2, 2)
+  step     25/50  loss 1.3310  cls 0.6276  dom 0.6720  alpha 0.987  src_val AUC 0.6728  g 0.500
+  step     50/50  loss 0.8841  cls 0.5336  dom 0.3285  alpha 1.000  src_val AUC 0.7257  g 0.500
+  完成：best 源域 val AUC 0.7257 @ step 50  耗时 0.3 min
+Traceback (most recent call last):
+  File "C:\Users\15315\Desktop\paper1st\meliorate\project\src\breastdg\train\smoke.py", line 98, in main
+    pr = predict_with_probs(best, va, ld_va, device,
+                            domain_name="src_val",
+                            out_csv=out_root / name / "probs_val.csv")
+  File "C:\Users\15315\Desktop\paper1st\meliorate\.venv\Lib\site-packages\torch\utils\_contextlib.py", line 116, in decorate_context
+    return func(*args, **kwargs)
+  File "C:\Users\15315\Desktop\paper1st\meliorate\project\src\breastdg\train\engine.py", line 205, in predict_with_probs
+    logits = model(x.to(device))
+  File "C:\Users\15315\Desktop\paper1st\meliorate\.venv\Lib\site-packages\torch\nn\modules\module.py", line 1739, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\15315\Desktop\paper1st\meliorate\.venv\Lib\site-packages\torch\nn\modules\module.py", line 1750, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "C:\Users\15315\Desktop\paper1st\meliorate\project\src\breastdg\models\fdnet.py", line 142, in forward
+    d = self.forward_features(x)
+  File "C:\Users\15315\Desktop\paper1st\meliorate\project\src\breastdg\models\fdnet.py", line 126, in forward_features
+    ll, hf = self.dwt(x)
+             ~~~~~~~~^^^
+  File "C:\Users\15315\Desktop\paper1st\meliorate\.venv\Lib\site-packages\torch\nn\modules\module.py", line 1739, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\15315\Desktop\paper1st\meliorate\.venv\Lib\site-packages\torch\nn\modules\module.py", line 1750, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "C:\Users\15315\Desktop\paper1st\meliorate\project\src\breastdg\models\fdnet.py", line 52, in forward
+    out = F.conv2d(x, self.filters, stride=2, groups=c)          # (B,4C,H/2,W/2)
+RuntimeError: Input type (torch.cuda.FloatTensor) and weight type (torch.FloatTensor) should be the same
+Downloading: "https://download.pytorch.org/models/densenet121-a639ec97.pth" to C:\Users\15315/.cache\torch\hub\checkpoints\densenet121-a639ec97.pth
+  FAIL: RuntimeError: Input type (torch.cuda.FloatTensor) and weight type (torch.FloatTensor) should be the same
+
+--- densenet121_se ---
+C:\Users\15315\Desktop\paper1st\meliorate\.venv\Lib\site-packages\torch\optim\lr_scheduler.py:227: UserWarning: Detected call of `lr_scheduler.step()` before `optimizer.step()`. In PyTorch 1.1.0 and later, you should call them in the opposite order: `optimizer.step()` before `lr_scheduler.step()`.  Failure to do this will result in PyTorch skipping the first value of the learning rate schedule. See more details at https://pytorch.org/docs/stable/optim.html#how-to-adjust-learning-rate
+  warnings.warn(
+  前向 OK（eval）：(2, 2)
+  step     25/50  loss 1.5354  cls 0.7608  dom 0.7746  alpha 0.987  src_val AUC 0.7013
+  step     50/50  loss 3.9223  cls 0.6463  dom 3.2761  alpha 1.000  src_val AUC 0.6288
+  完成：best 源域 val AUC 0.7013 @ step 25  耗时 0.5 min
+Traceback (most recent call last):
+  File "C:\Users\15315\Desktop\paper1st\meliorate\project\src\breastdg\train\smoke.py", line 98, in main
+    pr = predict_with_probs(best, va, ld_va, device,
+                            domain_name="src_val",
+                            out_csv=out_root / name / "probs_val.csv")
+  File "C:\Users\15315\Desktop\paper1st\meliorate\.venv\Lib\site-packages\torch\utils\_contextlib.py", line 116, in decorate_context
+    return func(*args, **kwargs)
+  File "C:\Users\15315\Desktop\paper1st\meliorate\project\src\breastdg\train\engine.py", line 205, in predict_with_probs
+    logits = model(x.to(device))
+  File "C:\Users\15315\Desktop\paper1st\meliorate\.venv\Lib\site-packages\torch\nn\modules\module.py", line 1739, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\15315\Desktop\paper1st\meliorate\.venv\Lib\site-packages\torch\nn\modules\module.py", line 1750, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "C:\Users\15315\Desktop\paper1st\meliorate\project\src\breastdg\models\backbones.py", line 33, in forward
+    f = self.forward_features(x)
+  File "C:\Users\15315\Desktop\paper1st\meliorate\project\src\breastdg\models\backbones.py", line 71, in forward_features
+    return torch.flatten(self.pool(self.se(self.backbone(x))), 1)
+                                           ~~~~~~~~~~~~~^^^
+  File "C:\Users\15315\Desktop\paper1st\meliorate\.venv\Lib\site-packages\torch\nn\modules\module.py", line 1739, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\15315\Desktop\paper1st\meliorate\.venv\Lib\site-packages\torch\nn\modules\module.py", line 1750, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "C:\Users\15315\Desktop\paper1st\meliorate\.venv\Lib\site-packages\torch\nn\modules\container.py", line 250, in forward
+    input = module(input)
+  File "C:\Users\15315\Desktop\paper1st\meliorate\.venv\Lib\site-packages\torch\nn\modules\module.py", line 1739, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\15315\Desktop\paper1st\meliorate\.venv\Lib\site-packages\torch\nn\modules\module.py", line 1750, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "C:\Users\15315\Desktop\paper1st\meliorate\.venv\Lib\site-packages\torch\nn\modules\conv.py", line 554, in forward
+    return self._conv_forward(input, self.weight, self.bias)
+           ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\15315\Desktop\paper1st\meliorate\.venv\Lib\site-packages\torch\nn\modules\conv.py", line 549, in _conv_forward
+    return F.conv2d(
+           ~~~~~~~~^
+        input, weight, bias, self.stride, self.padding, self.dilation, self.groups
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+RuntimeError: Input type (torch.cuda.FloatTensor) and weight type (torch.FloatTensor) should be the same
+  FAIL: RuntimeError: Input type (torch.cuda.FloatTensor) and weight type (torch.FloatTensor) should be the same
+
+==============================================================================
+S3 FAIL：未产出概率 CSV
+
+S4 门 g：初值 0.4998 → 末值 0.4997  （未变化）
+
+==============================================================================
+冒烟结果：成功 []
+          失败 ['resnet50_cbam', 'fdnet_v2', 'densenet121_se']
